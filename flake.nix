@@ -242,15 +242,32 @@
               '';
             };
 
-            # Override waybar config files with full Omarchy config + test indicator
-            # omarchy-nix copies files to ~/.config/waybar/ so we need to override them
-            # NOTE: Waybar looks for "config" not "config.jsonc"
-            xdg.configFile."waybar/config" = pkgs.lib.mkForce {
+            # Disable omarchy-nix waybar config and use our own
+            programs.waybar.enable = pkgs.lib.mkForce false;
+            
+            # Copy our custom waybar config files
+            xdg.configFile."waybar/config" = {
               source = ./waybar-config.jsonc;
             };
             
-            xdg.configFile."waybar/style.css" = pkgs.lib.mkForce {
+            xdg.configFile."waybar/style.css" = {
               source = ../omarchy/config/waybar/style.css;
+            };
+            
+            # Manually enable waybar as a systemd service
+            systemd.user.services.waybar = {
+              Unit = {
+                Description = "Highly customizable Wayland bar for Sway and Wlroots based compositors";
+                PartOf = [ "graphical-session.target" ];
+                After = [ "graphical-session.target" ];
+              };
+              Service = {
+                ExecStart = "${pkgs.waybar}/bin/waybar";
+                Restart = "on-failure";
+              };
+              Install = {
+                WantedBy = [ "hyprland-session.target" ];
+              };
             };
           };
         };
