@@ -203,10 +203,9 @@
                 localsend
                 # gpu-screen-recorder  # not in nixpkgs on your revision
                 # yaru-theme           # same story, theming should be handled differently
-                nwg-dock-hyprland
 
-                # App launcher, use what you actually have installed, for example:
-                # wofi
+                # App launcher (Walker) is provided by omarchy-nix
+                # SUPER + SPACE to launch apps
               ];
 
               # Install Omarchy scripts to ~/.local/share/omarchy/bin
@@ -229,9 +228,6 @@
                     natural_scroll = true
                   }
                 }
-
-                # Start dock with default settings
-                exec-once = nwg-dock-hyprland
               '';
             };
           };
