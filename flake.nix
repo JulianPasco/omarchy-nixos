@@ -204,6 +204,9 @@
                 # gpu-screen-recorder  # not in nixpkgs on your revision
                 # yaru-theme           # same story, theming should be handled differently
 
+                # Software KVM (share mouse/keyboard between computers)
+                deskflow  # Uncomment if you need to share keyboard/mouse with other PCs
+
                 # App launcher (Walker) is provided by omarchy-nix
                 # SUPER + SPACE to launch apps
               ];
