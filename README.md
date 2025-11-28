@@ -10,6 +10,11 @@ A NixOS port of the Omarchy desktop environment, providing a beautiful Hyprland-
 - The install script detects your actual hardware (disks, LUKS, CPU, etc.)
 - **Do NOT commit your actual hardware config** to the repo (it's machine-specific)
 
+**Themes:**
+- ✨ **14 Omarchy themes included** - See [THEMES.md](THEMES.md) for details
+- 🎨 Switch themes via **Super + Alt + Space** → Type "themes"
+- 🔧 Default theme: Tokyo Night (change in `flake.nix` or via menu)
+
 ## ✨ Features
 
 - **🎨 Beautiful Hyprland Setup**: Same look, feel, and keybindings as Omarchy
