@@ -141,7 +141,7 @@
                 gnome-calculator
                 gnome-keyring
                 gnome-themes-extra
-                gnome.nautilus
+                nautilus
                 gnome-disk-utility
                 gvfs
                 
@@ -151,7 +151,7 @@
                 noto-fonts-emoji
                 noto-fonts-extra
                 font-awesome
-                ia-writer-duospace
+                # ia-writer-duospace  # Not in nixpkgs, may be from omarchy overlays
                 (nerdfonts.override { fonts = [ "CascadiaMono" "JetBrainsMono" ]; })
                 
                 # Input Methods
@@ -188,7 +188,7 @@
                 onlyoffice-desktopeditors
                 
                 # Development
-                windsurf
+                # windsurf  # Not in nixpkgs - install separately if needed
                 
                 # Display Manager
                 sddm
@@ -242,10 +242,10 @@
         nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            ./hosts/${hostName}.nix
             omarchy-nix.nixosModules.default
             home-manager.nixosModules.home-manager
             commonConfig
+            ./hosts/${hostName}.nix
           ] ++ extraModules;
         };
 
