@@ -148,7 +148,7 @@
                 # Fonts
                 noto-fonts
                 noto-fonts-cjk-sans
-                noto-fonts-emoji
+                noto-fonts-color-emoji
                 noto-fonts-extra
                 font-awesome
                 # ia-writer-duospace  # Not in nixpkgs, may be from omarchy overlays
