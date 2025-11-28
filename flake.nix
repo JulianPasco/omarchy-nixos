@@ -245,14 +245,12 @@
             # Disable omarchy-nix waybar config and use our own
             programs.waybar.enable = pkgs.lib.mkForce false;
             
-            # Copy our custom waybar config files
-            xdg.configFile."waybar/config" = {
-              source = ./waybar-config.jsonc;
-            };
-            
-            xdg.configFile."waybar/style.css" = {
-              source = ../omarchy/config/waybar/style.css;
-            };
+            # Override omarchy-nix waybar directory (it uses home.file not xdg.configFile)
+            home.file.".config/waybar/".source = pkgs.lib.mkForce (pkgs.runCommand "waybar-config" {} ''
+              mkdir -p $out
+              cp ${./waybar-config.jsonc} $out/config
+              cp ${../omarchy/config/waybar/style.css} $out/style.css
+            '');
             
             # Manually enable waybar as a systemd service
             systemd.user.services.waybar = {
