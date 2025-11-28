@@ -154,7 +154,8 @@
                 # noto-fonts-extra  # Merged into noto-fonts
                 font-awesome
                 # ia-writer-duospace  # Not in nixpkgs, may be from omarchy overlays
-                (nerd-fonts.override { fonts = [ "CascadiaMono" "JetBrainsMono" ]; })
+                nerd-fonts.cascadia-mono
+                nerd-fonts.jetbrains-mono
                 
                 # Input Methods
                 fcitx5
