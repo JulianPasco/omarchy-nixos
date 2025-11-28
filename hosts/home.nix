@@ -9,9 +9,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # LUKS encryption (will be auto-detected during install)
-  # Uncomment and update UUID after running: ls -l /dev/disk/by-uuid/
-  # boot.initrd.luks.devices."luks-root".device = "/dev/disk/by-uuid/YOUR-UUID-HERE";
+  # LUKS encryption is auto-configured in hardware-home.nix by nixos-generate-config
 
   # Networking
   networking.hostName = "home";

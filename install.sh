@@ -129,16 +129,9 @@ sudo sed -i "s/users.julian/users.$USER_NAME/g" "$INSTALL_DIR/flake.nix"
 # Check for LUKS encryption
 if ls /dev/mapper/luks-* 2>/dev/null 1>&2; then
     echo -e "${YELLOW}🔐 LUKS encryption detected${NC}"
-    
-    LUKS_UUID=$(sudo blkid -s UUID -o value $(sudo cryptsetup status $(ls /dev/mapper/luks-* | head -1 | xargs basename) | grep device | awk '{print $2}'))
-    
-    if [ -n "$LUKS_UUID" ]; then
-        echo -e "${GREEN}✓ Found LUKS UUID: $LUKS_UUID${NC}"
-        
-        # Add LUKS configuration to host file
-        sudo sed -i "s|# boot.initrd.luks.devices.\"luks-root\".device = \"/dev/disk/by-uuid/YOUR-UUID-HERE\";|boot.initrd.luks.devices.\"luks-root\".device = \"/dev/disk/by-uuid/$LUKS_UUID\";|" "$INSTALL_DIR/hosts/$HOSTNAME.nix"
-        echo -e "${GREEN}✓ LUKS configuration added${NC}"
-    fi
+    echo -e "${GREEN}✓ LUKS configuration already in hardware-$HOSTNAME.nix${NC}"
+    # Note: nixos-generate-config automatically adds LUKS config to hardware file
+    # No need to add it manually to avoid duplicates
 fi
 
 # Initialize git in the config directory
