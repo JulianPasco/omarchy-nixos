@@ -209,7 +209,7 @@
               ];
               
               # Install all Omarchy scripts to ~/.local/share/omarchy/bin
-              file.".local/share/omarchy/bin" = {
+              file.".local/share/omarchy/bin" = pkgs.lib.mkForce {
                 source = ./bin;
                 recursive = true;
                 executable = true;
