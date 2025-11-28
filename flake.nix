@@ -50,7 +50,7 @@
               packages = with pkgs; [
                 # Core System Tools
                 _1password-gui
-                _1password
+                _1password-cli
                 avahi
                 bash-completion
                 bat
