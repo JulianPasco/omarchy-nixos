@@ -19,8 +19,8 @@ Based on [Omarchy](https://github.com/basecamp/omarchy) by DHH, this provides 10
 On a fresh NixOS installation, run:
 
 ```bash
-# Download the installer
-curl -fsSL https://raw.githubusercontent.com/JulianPasco/omarchy-nixos/main/install.sh -o install.sh
+# Download the installer (with cache bypass)
+curl -fsSL "https://raw.githubusercontent.com/JulianPasco/omarchy-nixos/main/install.sh?$(date +%s)" -o install.sh
 
 # Make it executable
 chmod +x install.sh
@@ -31,8 +31,10 @@ chmod +x install.sh
 
 **Or as a one-liner:**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/JulianPasco/omarchy-nixos/main/install.sh -o install.sh && chmod +x install.sh && ./install.sh
+curl -fsSL "https://raw.githubusercontent.com/JulianPasco/omarchy-nixos/main/install.sh?$(date +%s)" -o install.sh && chmod +x install.sh && ./install.sh
 ```
+
+**⚠️ Important:** Never use `curl | bash` for this script - it won't work because the script needs interactive input!
 
 The installer will:
 1. Prompt you to select home or work configuration

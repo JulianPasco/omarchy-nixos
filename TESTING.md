@@ -6,8 +6,11 @@
 
 **Installation Command:**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/JulianPasco/omarchy-nixos/main/install.sh | bash
+# Download first (bypasses cache)
+curl -fsSL "https://raw.githubusercontent.com/JulianPasco/omarchy-nixos/main/install.sh?$(date +%s)" -o install.sh && chmod +x install.sh && ./install.sh
 ```
+
+**⚠️ Do NOT use `curl | bash` - it won't work!**
 
 ## 🎯 How to Test
 
