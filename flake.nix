@@ -172,7 +172,7 @@
                 # python3Packages.terminaltexteffects  # May not be available
                 
                 # Media & Graphics
-                libsForQt5.kdenlive
+                # kdenlive  # Not available in current nixpkgs
                 obs-studio
                 
                 # Productivity
