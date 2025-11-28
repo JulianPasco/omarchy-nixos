@@ -132,7 +132,7 @@
                 # waybar  # Provided by omarchy-nix
                 wayfreeze
                 xdg-desktop-portal-gtk
-                xdg-desktop-portal-hyprland
+                # xdg-desktop-portal-hyprland  # Provided by omarchy-nix
 
                 # Terminal & Shell
                 ghostty
