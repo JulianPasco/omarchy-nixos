@@ -45,6 +45,12 @@
               omarchy-nix.homeManagerModules.default
             ];
 
+            # Configure Omarchy theme (using nix-colors)
+            # Available: tokyo-night (default), kanagawa, everforest, catppuccin, nord, gruvbox, gruvbox-light
+            omarchy = {
+              theme = "tokyo-night";  # Change this to switch themes
+            };
+
             home = {
               username = "julian";
               homeDirectory = "/home/julian";
@@ -223,6 +229,26 @@
                 source = ../omarchy/default;
                 recursive = true;
               };
+
+              # Install Omarchy themes to .config/omarchy/themes (14 themes available)
+              file.".config/omarchy/themes" = {
+                source = ../omarchy/themes;
+                recursive = true;
+              };
+
+              # Set default theme on first run
+              file.".config/omarchy/current/theme" = {
+                source = ../omarchy/themes/tokyo-night;
+              };
+
+              # Install Walker (Elephant) theme selector plugin
+              file.".config/walker/plugins/omarchy_themes.lua" = {
+                source = ../omarchy/default/elephant/omarchy_themes.lua;
+              };
+
+              # Link btop theme to current Omarchy theme
+              file.".config/btop/themes/current.theme".source = config.lib.file.mkOutOfStoreSymlink
+                "${config.home.homeDirectory}/.config/omarchy/current/theme/btop.theme";
 
               # Add Omarchy bin to PATH
               sessionPath = [ "$HOME/.local/share/omarchy/bin" ];
