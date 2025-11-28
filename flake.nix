@@ -160,7 +160,7 @@
                 # Input Methods
                 fcitx5
                 fcitx5-gtk
-                fcitx5-qt
+                libsForQt5.fcitx5-qt
                 
                 # Qt/KDE
                 libsForQt5.qtstyleplugin-kvantum
@@ -169,7 +169,7 @@
                 # Python Packages
                 python3Packages.pygobject3
                 python3Packages.poetry-core
-                python3Packages.terminaltexteffects
+                # python3Packages.terminaltexteffects  # May not be available
                 
                 # Media & Graphics
                 kdenlive
@@ -191,7 +191,7 @@
                 onlyoffice-desktopeditors
                 
                 # Development
-                # windsurf  # Not in nixpkgs - install separately if needed
+                windsurf
                 
                 # Display Manager
                 sddm
