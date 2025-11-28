@@ -215,8 +215,19 @@
                 executable = true;
               };
 
+              # Install Omarchy default configs (waybar indicators, etc.)
+              file.".local/share/omarchy/default" = {
+                source = ../omarchy/default;
+                recursive = true;
+              };
+
               # Add Omarchy bin to PATH
               sessionPath = [ "$HOME/.local/share/omarchy/bin" ];
+
+              # Set OMARCHY_PATH environment variable
+              sessionVariables = {
+                OMARCHY_PATH = "$HOME/.local/share/omarchy";
+              };
             };
 
             # Extra Hyprland configuration
