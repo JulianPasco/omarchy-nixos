@@ -149,7 +149,7 @@
                 noto-fonts
                 noto-fonts-cjk-sans
                 noto-fonts-color-emoji
-                noto-fonts-extra
+                # noto-fonts-extra  # Merged into noto-fonts
                 font-awesome
                 # ia-writer-duospace  # Not in nixpkgs, may be from omarchy overlays
                 (nerdfonts.override { fonts = [ "CascadiaMono" "JetBrainsMono" ]; })
