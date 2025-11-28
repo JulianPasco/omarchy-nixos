@@ -49,6 +49,8 @@
               # ALL Omarchy packages (143 packages)
               packages = with pkgs; [
                 # Core System Tools
+                _1password-gui
+                _1password
                 avahi
                 bash-completion
                 bat
