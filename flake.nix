@@ -95,7 +95,7 @@
                 mariadb
                 mise
                 mpv
-                neovim
+                # neovim  # Provided by omarchy-nix.homeManagerModules.default
                 pamixer
                 pinta
                 playerctl
