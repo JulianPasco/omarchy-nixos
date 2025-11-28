@@ -194,7 +194,7 @@
                 windsurf
                 
                 # Display Manager
-                sddm
+                libsForQt5.sddm
                 
                 # System Config
                 system-config-printer
