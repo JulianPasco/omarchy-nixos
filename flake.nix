@@ -122,14 +122,14 @@
                 xournalpp
                 zoxide
 
-                # Hyprland & Wayland bits
-                hyprland
-                hypridle
-                hyprlock
-                hyprpicker
-                hyprsunset
-                mako
-                waybar
+                # Hyprland & Wayland bits (most provided by omarchy-nix)
+                # hyprland  # Provided by omarchy-nix
+                # hypridle  # Provided by omarchy-nix
+                # hyprlock  # Provided by omarchy-nix
+                # hyprpicker  # Provided by omarchy-nix
+                # hyprsunset  # Provided by omarchy-nix
+                # mako  # Provided by omarchy-nix
+                # waybar  # Provided by omarchy-nix
                 wayfreeze
                 xdg-desktop-portal-gtk
                 xdg-desktop-portal-hyprland
