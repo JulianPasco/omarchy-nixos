@@ -249,6 +249,8 @@
           ] ++ extraModules;
         };
 
+      pkgs = nixpkgs.legacyPackages.${system};
+      
     in {
       nixosConfigurations = {
         home = mkHost "home" [];

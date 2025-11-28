@@ -19,7 +19,19 @@ Based on [Omarchy](https://github.com/basecamp/omarchy) by DHH, this provides 10
 On a fresh NixOS installation, run:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/JulianPasco/omarchy-nixos/main/install.sh | bash
+# Download the installer
+curl -fsSL https://raw.githubusercontent.com/JulianPasco/omarchy-nixos/main/install.sh -o install.sh
+
+# Make it executable
+chmod +x install.sh
+
+# Run it
+./install.sh
+```
+
+**Or as a one-liner:**
+```bash
+curl -fsSL https://raw.githubusercontent.com/JulianPasco/omarchy-nixos/main/install.sh -o install.sh && chmod +x install.sh && ./install.sh
 ```
 
 The installer will:

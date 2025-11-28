@@ -52,21 +52,21 @@ echo -e "${BLUE}Let's set up your system${NC}"
 echo ""
 
 while [ -z "${USER_FULLNAME:-}" ]; do
-    read -p "Enter your full name: " USER_FULLNAME </dev/tty
+    read -p "Enter your full name: " USER_FULLNAME
     if [ -z "$USER_FULLNAME" ]; then
         echo -e "${RED}Name cannot be empty${NC}"
     fi
 done
 
 while [ -z "${USER_EMAIL:-}" ]; do
-    read -p "Enter your email address: " USER_EMAIL </dev/tty
+    read -p "Enter your email address: " USER_EMAIL
     if [ -z "$USER_EMAIL" ]; then
         echo -e "${RED}Email cannot be empty${NC}"
     fi
 done
 
 while [ -z "${USER_NAME:-}" ]; do
-    read -p "Enter your username: " USER_NAME </dev/tty
+    read -p "Enter your username: " USER_NAME
     if [ -z "$USER_NAME" ]; then
         echo -e "${RED}Username cannot be empty${NC}"
     fi
@@ -79,7 +79,7 @@ while true; do
     echo -e "${BLUE}Which machine is this?${NC}"
     echo "1) home"
     echo "2) work"
-    read -p "Enter choice (1 or 2): " choice </dev/tty
+    read -p "Enter choice (1 or 2): " choice
     
     case $choice in
         1)
