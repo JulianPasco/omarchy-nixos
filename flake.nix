@@ -57,7 +57,7 @@
                 clang
                 cups
                 cups-filters
-                cups-pdf
+                # cups-pdf  # Not available in nixpkgs
                 docker
                 docker-buildx
                 docker-compose
