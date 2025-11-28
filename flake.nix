@@ -245,17 +245,25 @@
               '';
             };
 
-            # Disable omarchy-nix waybar config and use our own
+            # Completely disable omarchy-nix waybar and use our own
             programs.waybar.enable = pkgs.lib.mkForce false;
             
-            # Override omarchy-nix waybar directory (it uses home.file not xdg.configFile)
-            home.file.".config/waybar/".source = pkgs.lib.mkForce (pkgs.runCommand "waybar-config" {} ''
-              mkdir -p $out
-              cp ${./waybar-config.jsonc} $out/config
-              cp ${../omarchy/config/waybar/style.css} $out/style.css
-            '');
+            # Null out the omarchy-nix waybar directory first
+            home.file.".config/waybar/config.jsonc" = pkgs.lib.mkForce { source = null; };
+            home.file.".config/waybar/style.css" = pkgs.lib.mkForce { source = null; };
+            home.file.".config/waybar/theme.css" = pkgs.lib.mkForce { source = null; };
+            home.file.".config/waybar/" = pkgs.lib.mkForce { source = null; recursive = false; };
             
-            # Manually enable waybar as a systemd service
+            # Now set our custom waybar config
+            home.file.".config/waybar-custom/config" = {
+              source = ./waybar-config.jsonc;
+            };
+            
+            home.file.".config/waybar-custom/style.css" = {
+              source = ../omarchy/config/waybar/style.css;
+            };
+            
+            # Manually enable waybar as a systemd service with custom config path
             systemd.user.services.waybar = {
               Unit = {
                 Description = "Highly customizable Wayland bar for Sway and Wlroots based compositors";
@@ -263,7 +271,7 @@
                 After = [ "graphical-session.target" ];
               };
               Service = {
-                ExecStart = "${pkgs.waybar}/bin/waybar";
+                ExecStart = "${pkgs.waybar}/bin/waybar -c $HOME/.config/waybar-custom/config -s $HOME/.config/waybar-custom/style.css";
                 Restart = "on-failure";
               };
               Install = {
