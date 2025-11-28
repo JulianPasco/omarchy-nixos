@@ -244,7 +244,8 @@
 
             # Override waybar config files with full Omarchy config + test indicator
             # omarchy-nix copies files to ~/.config/waybar/ so we need to override them
-            xdg.configFile."waybar/config.jsonc" = pkgs.lib.mkForce {
+            # NOTE: Waybar looks for "config" not "config.jsonc"
+            xdg.configFile."waybar/config" = pkgs.lib.mkForce {
               source = ./waybar-config.jsonc;
             };
             
