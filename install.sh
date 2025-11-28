@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -eo pipefail
 
 # Colors for output
 RED='\033[0;31m'
@@ -51,29 +51,51 @@ echo ""
 echo -e "${BLUE}Let's set up your system${NC}"
 echo ""
 
-read -p "Enter your full name: " USER_FULLNAME
-read -p "Enter your email address: " USER_EMAIL
-read -p "Enter your username: " USER_NAME
+while [ -z "${USER_FULLNAME:-}" ]; do
+    read -p "Enter your full name: " USER_FULLNAME
+    if [ -z "$USER_FULLNAME" ]; then
+        echo -e "${RED}Name cannot be empty${NC}"
+    fi
+done
+
+while [ -z "${USER_EMAIL:-}" ]; do
+    read -p "Enter your email address: " USER_EMAIL
+    if [ -z "$USER_EMAIL" ]; then
+        echo -e "${RED}Email cannot be empty${NC}"
+    fi
+done
+
+while [ -z "${USER_NAME:-}" ]; do
+    read -p "Enter your username: " USER_NAME
+    if [ -z "$USER_NAME" ]; then
+        echo -e "${RED}Username cannot be empty${NC}"
+    fi
+done
+
 echo ""
 
-# Prompt for hostname
-echo -e "${BLUE}Which machine is this?${NC}"
-echo "1) home"
-echo "2) work"
-read -p "Enter choice (1 or 2): " choice
-
-case $choice in
-    1)
-        HOSTNAME="home"
-        ;;
-    2)
-        HOSTNAME="work"
-        ;;
-    *)
-        echo -e "${RED}❌ Invalid choice${NC}"
-        exit 1
-        ;;
-esac
+# Prompt for hostname with validation loop
+while true; do
+    echo -e "${BLUE}Which machine is this?${NC}"
+    echo "1) home"
+    echo "2) work"
+    read -p "Enter choice (1 or 2): " choice
+    
+    case $choice in
+        1)
+            HOSTNAME="home"
+            break
+            ;;
+        2)
+            HOSTNAME="work"
+            break
+            ;;
+        *)
+            echo -e "${RED}❌ Invalid choice. Please enter 1 or 2.${NC}"
+            echo ""
+            ;;
+    esac
+done
 
 echo -e "${GREEN}✓ Selected: $HOSTNAME${NC}"
 echo ""
