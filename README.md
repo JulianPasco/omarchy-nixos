@@ -1,8 +1,14 @@
-# Omarchy Clone for NixOS
+# Omarchy NixOS Configuration
 
-A complete Omarchy clone for NixOS - same look, same feel, same functionality, but with declarative NixOS configuration.
+A NixOS port of the Omarchy desktop environment, providing a beautiful Hyprland-based setup with full feature parity.
 
-Based on [Omarchy](https://github.com/basecamp/omarchy) by DHH, this provides 100% feature parity on NixOS using [omarchy-nix](https://github.com/henrysipp/omarchy-nix) as the foundation.
+## ⚠️ Important Notes
+
+**Hardware Configuration Files:**
+- `hosts/hardware-work.nix` and `hosts/hardware-home.nix` are **PLACEHOLDER** files
+- They will be **automatically replaced** during installation by `nixos-generate-config`
+- The install script detects your actual hardware (disks, LUKS, CPU, etc.)
+- **Do NOT commit your actual hardware config** to the repo (it's machine-specific)
 
 ## ✨ Features
 
