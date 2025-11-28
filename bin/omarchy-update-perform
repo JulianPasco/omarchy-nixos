@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# NixOS adaptation: Perform system update
+
+set -e
+
+omarchy-update-time
+# omarchy-update-keyring  # Not needed on NixOS
+omarchy-update-available-reset
+omarchy-update-system-pkgs  # This will run nixos-rebuild
+omarchy-migrate
+omarchy-hook post-update
+omarchy-update-restart

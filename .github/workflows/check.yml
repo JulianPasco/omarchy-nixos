@@ -1,0 +1,29 @@
+name: Check Flake
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install Nix
+        uses: cachix/install-nix-action@v25
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+      
+      - name: Check flake
+        run: nix flake check --all-systems
+      
+      - name: Build home configuration
+        run: nix build .#nixosConfigurations.home.config.system.build.toplevel
+      
+      - name: Build work configuration
+        run: nix build .#nixosConfigurations.work.config.system.build.toplevel

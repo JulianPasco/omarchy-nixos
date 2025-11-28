@@ -1,0 +1,23 @@
+# Nix build results
+result
+result-*
+
+# Hardware configurations (machine-specific)
+# Uncomment these if you don't want to share hardware configs
+# hosts/hardware-home.nix
+# hosts/hardware-work.nix
+
+# Backup files
+*.backup
+*.bak
+*~
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+*.log
