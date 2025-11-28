@@ -97,7 +97,7 @@
                 pinta
                 playerctl
                 plocate
-                plymouth
+                # plymouth  # May not be available
                 polkit_gnome
                 postgresql
                 ripgrep
@@ -111,8 +111,8 @@
                 swaybg
                 tldr
                 tree-sitter
-                tzupdate
-                ufw
+                # tzupdate  # May not be available
+                # ufw  # Not available in nixpkgs (use networking.firewall instead)
                 unzip
                 whois
                 wireless-regdb
@@ -196,12 +196,12 @@
                 # System Config
                 system-config-printer
                 power-profiles-daemon
-                nssmdns
+                # nssmdns  # May not be available
                 
                 # Additional Tools
                 localsend
-                gpu-screen-recorder
-                yaru-theme
+                # gpu-screen-recorder  # May not be available
+                # yaru-theme  # May not be available
                 nwg-dock-hyprland
                 
                 # Walker launcher (if available, otherwise use wofi)
