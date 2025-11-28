@@ -246,9 +246,6 @@
                 source = ../omarchy/default/elephant/omarchy_themes.lua;
               };
 
-              # Create btop themes directory and symlink to current theme
-              file.".config/btop/themes/.keep".text = "";
-
               # Add Omarchy bin to PATH
               sessionPath = [ "$HOME/.local/share/omarchy/bin" ];
 
@@ -258,9 +255,9 @@
               };
             };
 
-            # Link btop theme to current Omarchy theme (using out-of-store symlink)
-            xdg.configFile."btop/themes/current.theme".source = 
-              config.lib.file.mkOutOfStoreSymlink "/home/julian/.config/omarchy/current/theme/btop.theme";
+            # Note: btop theme is managed by omarchy-theme-set script
+            # which creates the symlink at ~/.config/btop/themes/current.theme
+            # pointing to ~/.config/omarchy/current/theme/btop.theme
 
             # Extra Hyprland configuration
             wayland.windowManager.hyprland = {
